@@ -1,0 +1,19 @@
+<!-- Body -->
+
+<body class="text-center">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div class="container">
+        <ul class="list-group">
+            <% books.forEach(function(book){ %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a class="nav-link" href="#" onclick="loadpage('/books/<%=book.id %>')"> <%=book.title %>  <span class="sr-only"></span></a>
+                <span class="badge badge-primary badge-pill"><%=book.id %> </span>
+            </li>
+            <% }); %>
+        </ul>
+    </div>
+
+</body>
+
+

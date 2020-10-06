@@ -1,0 +1,35 @@
+<!-- Body -->
+
+<body class="text-center">
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <div class="container text-muted text-left">
+    <form class="container" name="signInForm" id="signInForm" width="400px">
+      <div class="form-group">
+        <label for="exampleInputEmail1">UserName</label>
+        <input name="username" id="username" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input name="password" id="password" class="form-control" />
+      </div>
+      <button class="btn btn-primary" id="submitbtn">Sign In</button>
+      <button class="btn btn-primary" type="button" disabled id="loadingbtn" style="display: none">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+      </button>
+      <div class="alert alert-success" role="alert" id="response" style="display: none"></div>
+    </form>
+  </div>
+</body>
+
+<script>
+  $("#submitbtn").click(function (e) {
+    e.preventDefault();
+    let submitbtn = $("#submitbtn");
+    let loadingbtn = $("#loadingbtn");
+    let restext = $("#response");
+    const $form = $("#signInForm");
+    submitHandler(submitbtn, loadingbtn, restext, $form, "/auth/signin");
+  });
+</script>
