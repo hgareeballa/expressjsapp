@@ -11,7 +11,16 @@ function router(nav) {
     res.render("users");
   });
   userRouter.route("/new").get((req, res) => {
-    res.render("users2");
+    res.render("grid_view", {
+      title: 'Gridview Users Title',
+      name: 'User',
+      fields: [{ id: 'id', name: 'ID' }, { id: 'username', name: 'User Name' }, { id: 'password', name: 'Password' },],
+      CRUDfields: [{ id: 'username', name: 'User Name' }, { id: 'password', name: 'Password' },],
+      loadurl: '/users/all',
+      deleteurl: '/users/delete',
+      updateurl: '/users/update',
+      addurl: '/users/add'
+    });
   });
   userRouter.route("/alldata").post((req, res) => {
     console.log(
@@ -23,8 +32,8 @@ function router(nav) {
         ["id", "username", "password"],
         "users"
       );
-     // console.log(JSON.stringify(data));
-      res.json({rows: data });
+      // console.log(JSON.stringify(data));
+      res.json({ rows: data });
     })();
   });
 
@@ -84,11 +93,9 @@ function router(nav) {
       const results = await myDB.addRecord(flds, "users");
       console.log("results:", results);
       if (results) {
-        //echo json_encode(array('success'=>true));
         res.json({ success: true, successMsg: "Record Added Succesfully...." });
       } else {
         res.json({ errorMsg: "Some errors occured...." });
-        //echo json_encode(array('errorMsg'=>'Some errors occured.'));
       }
     })();
   });

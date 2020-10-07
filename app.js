@@ -8,7 +8,9 @@ var logger = require('morgan');
 const nav = [
   { link: '/home', title: 'Home' },
   { link: '/books', title: 'Books' },
-  { link: '/users', title: 'Users' },
+  { link: '/newbook', title: 'Books New' },
+  { link: '/newbook/ro', title: 'Books RO' },
+  { link: '/users/new', title: 'Users' },
   { link: '/authors', title: 'Authors' },
   { link: '/auth/signup', title: 'Register' },
   { link: '/auth/signin', title: 'Sign In' },
@@ -20,6 +22,7 @@ var booksRouter = require('./routes/books')(nav);
 var adminRouter = require('./routes/admin')(nav);
 var usersRouter = require('./routes/users')(nav);
 var authRouter = require('./routes/auth')(nav);
+var newbooksRouter = require('./routes/newbooks')(nav);
 
 var app = express();
 
@@ -42,15 +45,16 @@ app.use('/books', booksRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
+app.use('/newbook', newbooksRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
