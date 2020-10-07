@@ -11,7 +11,7 @@ function router(nav) {
   authRouter.route("/signup").get((req, res) => {
     res.render("signup", { nav, title: "Register PAge" });
   });
-  authRouter.route("/signUp").post(addRecord);
+  authRouter.route("/signup").post(addRecord);
 
   authRouter.route("/signin").get((req, res) => {
     res.render("signin", { nav, title: "Login PAge" });

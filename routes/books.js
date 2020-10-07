@@ -1,13 +1,17 @@
 var express = require("express");
 var bookRouter = express.Router();
-var bookCont = require('../cont/myCont');
+var myCont = require('../cont/myCont');
 
 /* GET Books listing. */
 function router(nav) {
-  const { getAll,getByid, midware } = bookCont(nav);
+  const { getAll,getByid, midware } = myCont(nav);
   bookRouter.use(midware);
-  bookRouter.route("/").get(getAll);
-  bookRouter.route("/:id").get(getByid);
+  bookRouter.route("/").get((req,res)=>{
+    getAll(req,res,'books',['id', 'title', 'author'],'books','Books View')
+  });
+  bookRouter.route("/:id").get((req,res)=>{
+    getByid(req,res,'books',['id', 'title', 'author'])
+  });
 
   return bookRouter;
 }

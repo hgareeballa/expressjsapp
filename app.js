@@ -8,6 +8,7 @@ var logger = require('morgan');
 const nav = [
   { link: '/home', title: 'Home' },
   { link: '/books', title: 'Books' },
+  { link: '/users', title: 'Users' },
   { link: '/authors', title: 'Authors' },
   { link: '/auth/signup', title: 'Register' },
   { link: '/auth/signin', title: 'Sign In' },
@@ -17,6 +18,7 @@ const nav = [
 var indexRouter = require('./routes/index')(nav);
 var booksRouter = require('./routes/books')(nav);
 var adminRouter = require('./routes/admin')(nav);
+var usersRouter = require('./routes/users')(nav);
 var authRouter = require('./routes/auth')(nav);
 
 var app = express();
@@ -39,6 +41,8 @@ app.use('/', indexRouter);
 app.use('/books', booksRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
+app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

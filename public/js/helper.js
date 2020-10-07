@@ -60,19 +60,28 @@ function submitHandler(submitbtn,loadingbtn,restext,form,url) {
     console.log("done");
     let { error, msg } = response;
 
-    if (error == "Unauthorized") {
-      restext.html(msg);
-      restext.prop("class", "btn btn-danger");
-    } else {
-      if (error == "Success") {
+    switch(error) {
+      case "Unauthorized":
+        restext.html(msg);
+        restext.prop("class", "btn btn-danger");
+        // code block
+        break;
+      case "Success":
         restext.html(msg);
         restext.prop("class", "btn btn-success");
-        $("#mymain").html(response).delay(500);
-      } else {
+        // code block
+        break;
+      case "Fail":
+        restext.html(msg);
+        restext.prop("class", "btn btn-danger");
+          // code block
+          break;
+      default:
         restext.html("Success");
         restext.prop("class", "btn btn-success");
         $("#mymain").html(response).delay(500);
-      }//
-    }
+        // code block
+    };//case
+
   });
 }; //
