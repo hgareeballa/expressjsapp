@@ -23,8 +23,8 @@ function loadpage(url) {
   })
     .done(function (data) {
       $("#mymain").hide();
-      $("#mymain").fadeIn();
       $("#mymain").html(data);
+      $("#mymain").fadeIn(1500);
     })
     .fail(function (err) {
       console.log("Something went wrong!");
@@ -32,7 +32,7 @@ function loadpage(url) {
     });
 } //
 
-function submitHandler(submitbtn,loadingbtn,restext,form,url) {
+function submitHandler(submitbtn, loadingbtn, restext, form, url) {
   loadingbtn.hide();
   restext.hide();
 
@@ -60,7 +60,7 @@ function submitHandler(submitbtn,loadingbtn,restext,form,url) {
     console.log("done");
     let { error, msg } = response;
 
-    switch(error) {
+    switch (error) {
       case "Unauthorized":
         restext.html(msg);
         restext.prop("class", "btn btn-danger");
@@ -74,13 +74,13 @@ function submitHandler(submitbtn,loadingbtn,restext,form,url) {
       case "Fail":
         restext.html(msg);
         restext.prop("class", "btn btn-danger");
-          // code block
-          break;
+        // code block
+        break;
       default:
         restext.html("Success");
         restext.prop("class", "btn btn-success");
         $("#mymain").html(response).delay(500);
-        // code block
+      // code block
     };//case
 
   });

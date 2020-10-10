@@ -1,6 +1,6 @@
 var express = require("express");
 var userRouter = express.Router();
-var myCont = require("../cont/gridCont");
+var myCont = require("../cont/myCont");
 var myDB = require("../config/all-repo");
 
 /* GET Books listing. */

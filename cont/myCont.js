@@ -8,6 +8,7 @@ function myCont(nav) {
       res.redirect("/home");
     }
   } //
+
   async function getAll(req, res, tbl, flds, viewfile, title) {
     const data = await myDB.getAll(flds, tbl);
     console.log(JSON.stringify(data));

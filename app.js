@@ -19,13 +19,11 @@ const nav = [
 
 var indexRouter = require('./routes/index')(nav);
 var booksRouter = require('./routes/books')(nav);
-var adminRouter = require('./routes/admin')(nav);
 var usersRouter = require('./routes/users')(nav);
 var authRouter = require('./routes/auth')(nav);
-var newbooksRouter = require('./routes/newbooks')(nav);
+var bookRouter = require('./routes/bookRouter')();
 
 var app = express();
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,10 +40,9 @@ require('./config/passport')(app);
 
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
-app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
-app.use('/newbook', newbooksRouter);
+app.use('/newbook', bookRouter);
 
 
 // catch 404 and forward to error handler
