@@ -8,10 +8,11 @@ function router(nav) {
   const { getAll, getByid, midware, deleteRecordById } = myCont(nav);
   //userRouter.use(midware);
   userRouter.route("/").get((req, res) => {
-    res.render("users");
+    res.render("users", { nav, title: 'Users Page' });
   });
   userRouter.route("/new").get((req, res) => {
     res.render("grid_view", {
+      nav,
       title: 'Gridview Users Title',
       name: 'User',
       fields: [{ id: 'id', name: 'ID' }, { id: 'username', name: 'User Name' }, { id: 'password', name: 'Password' },],

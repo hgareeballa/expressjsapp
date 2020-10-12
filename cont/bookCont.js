@@ -1,8 +1,9 @@
 const myDB = require("../config/all-repo");
 
-function bookCont() {
+function bookCont(nav) {
     async function allBooks(req, res) {
         res.render("grid_view", {
+            nav,
             title: 'Gridview Books Title',
             name: 'Book',
             fields: [{ id: 'id', name: 'ID' }, { id: 'title', name: 'Book Title' }, { id: 'author', name: 'Book Title' },],
@@ -16,6 +17,7 @@ function bookCont() {
 
     async function allBooksRo(req, res) {
         res.render("grid_view_ro", {
+            nav,
             title: 'Gridview Books Title',
             name: 'Book',
             fields: [{ id: 'id', name: 'ID' }, { id: 'title', name: 'Book Title' }, { id: 'author', name: 'Book Title' },],

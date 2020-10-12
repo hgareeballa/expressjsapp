@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+var expressLayouts = require('express-ejs-layouts');
 //var db = require('./config/db');
 
 
@@ -21,10 +22,11 @@ var indexRouter = require('./routes/index')(nav);
 var booksRouter = require('./routes/books')(nav);
 var usersRouter = require('./routes/users')(nav);
 var authRouter = require('./routes/auth')(nav);
-var bookRouter = require('./routes/bookRouter')();
+var bookRouter = require('./routes/bookRouter')(nav);
 
 var app = express();
-
+app.use(expressLayouts);
+//app.set("layout extractScripts", true);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

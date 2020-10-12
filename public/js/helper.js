@@ -1,3 +1,16 @@
+basket
+  .require(
+    { url: '/js/jquery-3.5.1.min.js' },
+    { url: '/js/jquery.easyui.min.js' }
+  )
+  .then(function () {
+    // Success
+    console.log('Loading Done!');
+  }, function (error) {
+    // There was an error fetching the script
+    console.log(error);
+  });
+
 function loadpage(url) {
   $.ajax({
     url: url,

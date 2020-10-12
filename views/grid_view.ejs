@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Basic CRUD Application - jQuery EasyUI CRUD Demo</title>
 </head>
-<h2><%=title %></h2>
+
 <table id="dg" title="<%=name %> View" class="easyui-datagrid" style="width:100%;height:500px" toolbar="#toolbar"
-    pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+    url='<%=loadurl %>' pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
     <thead>
         <tr>
             <% fields.forEach(function(field){ %>
@@ -106,7 +106,7 @@
         }
     }
 </script>
-<!--<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>-->
+<!-- <script type="text/javascript" src="/js/jquery.easyui.min.js"></script> -->
 <script>
     basket.require({ url: '/js/jquery.easyui.min.js' });
     $('#dg').datagrid({ url: '<%=loadurl %>' });    
