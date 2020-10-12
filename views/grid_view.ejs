@@ -1,12 +1,12 @@
 <!-- Body -->
 
 <head>
-    <meta charset="UTF-8">    
-    <title>Basic CRUD Application - jQuery EasyUI CRUD Demo</title>        
+    <meta charset="UTF-8">
+    <title>Basic CRUD Application - jQuery EasyUI CRUD Demo</title>
 </head>
 <h2><%=title %></h2>
-<table id="dg" title="<%=name %> View" class="easyui-datagrid" style="width:100%;height:500px" url="<%=loadurl %>"
-    toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+<table id="dg" title="<%=name %> View" class="easyui-datagrid" style="width:100%;height:500px" toolbar="#toolbar"
+    pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
     <thead>
         <tr>
             <% fields.forEach(function(field){ %>
@@ -16,8 +16,10 @@
     </thead>
 </table>
 <div id="toolbar">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New <%=name %></a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit <%=name %></a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New
+        <%=name %></a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit
+        <%=name %></a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
         onclick="destroyUser()">Remove <%=name %></a>
 </div>
@@ -26,11 +28,12 @@
     data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
     <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
         <h3><%=name %> Information</h3>
-           <% CRUDfields.forEach(function(field){ %>
-              <div style="margin-bottom:10px">
-            <input name="<%=field.id %>" class="easyui-textbox" required="true" label="<%=field.name %>:" style="width:100%">
+        <% CRUDfields.forEach(function(field){ %>
+        <div style="margin-bottom:10px">
+            <input name="<%=field.id %>" class="easyui-textbox" required="true" label="<%=field.name %>:"
+                style="width:100%">
         </div>
-            <% }); %>
+        <% }); %>
     </form>
 </div>
 <div id="dlg-buttons">
@@ -70,10 +73,10 @@
                 } else {
                     $('#dlg').dialog('close');		// close the dialog
                     $('#dg').datagrid('reload');	// reload the user data
-                     $.messager.show({	// show error message
-                                title: 'Success',
-                                msg: result.successMsg
-                            });
+                    $.messager.show({	// show error message
+                        title: 'Success',
+                        msg: result.successMsg
+                    });
                 }
             }
         });
@@ -81,7 +84,7 @@
     function destroyUser() {
         var row = $('#dg').datagrid('getSelected');
         if (row) {
-            $.messager.confirm('Confirm', 'Are you sure you want to destroy this <%=name %> with ID:'+row.id+'?', function (r) {
+            $.messager.confirm('Confirm', 'Are you sure you want to destroy this <%=name %> with ID:' + row.id + '?', function (r) {
                 if (r) {
                     $.post('<%=deleteurl %>', { id: row.id }, function (result) {
                         if (result.success) {
@@ -104,8 +107,7 @@
     }
 </script>
 <!--<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>-->
-<script>    
+<script>
     basket.require({ url: '/js/jquery.easyui.min.js' });
+    $('#dg').datagrid({ url: '<%=loadurl %>' });    
 </script>
-
-

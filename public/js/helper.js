@@ -22,9 +22,10 @@ function loadpage(url) {
     },
   })
     .done(function (data) {
+      $("#mymain").html("");
       $("#mymain").hide();
       $("#mymain").html(data);
-      $("#mymain").fadeIn(1500);
+      $("#mymain").slideDown('slow');
     })
     .fail(function (err) {
       console.log("Something went wrong!");
