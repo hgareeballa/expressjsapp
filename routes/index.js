@@ -2,11 +2,11 @@ var express = require("express");
 var indexRouter = express.Router();
 
 /* GET home page. */
-function router(nav){
+function router(nav) {
   indexRouter.route("/").get((req, res) => {
     res.render("index", {
       nav,
-      title: "SignUp Page TGA",
+      title: "Home Page TGA",
     });
   });
   indexRouter.route("/home").get((req, res) => {
@@ -19,6 +19,6 @@ function router(nav){
     req.logout();
     res.redirect('/home');
   });
-return indexRouter;
+  return indexRouter;
 }
 module.exports = router;
