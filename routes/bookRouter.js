@@ -5,7 +5,7 @@ var midware = require('../cont/midware');
 var myDB = require('../config/all-repo');
 
 function router() {
-    //bookRouter.use(midware);
+    bookRouter.use(midware);
     bookRouter.route("/").get((req, res) => {
         allBooks(req, res);
     });

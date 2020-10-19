@@ -6,7 +6,7 @@ var myDB = require("../config/all-repo");
 /* GET Books listing. */
 function router(nav) {
   const { getAll, getByid, midware, deleteRecordById } = myCont(nav);
-  //userRouter.use(midware);
+  userRouter.use(midware);
   userRouter.route("/").get((req, res) => {
     res.render("users");
   });
